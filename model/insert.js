@@ -1,4 +1,3 @@
-debugger;
 const mysql = require('mysql');
 
 function con() {
