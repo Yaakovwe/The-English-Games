@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const database = require(database);
+const database = require('../model/database.js');
+const Question = function() {};
 router.post('/add', function(req, res, next) {
     let question = new Question(req.question, req.answers);
     const result = database.insert(question);

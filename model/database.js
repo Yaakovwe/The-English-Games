@@ -1,12 +1,4 @@
-const mysql = require('mysql');
-
-let request;
-
-if (typeof request.question !== 'undefined' && request.answer !== 'undefined') {
-    let question = request.question;
-    let answer = request.question
-}
-
+const mysql = require('mysql'); //TODO: Change to node.js module
 
 if (typeof connectDB === 'undefined') { //make sure the db connection is made
     const connection = mysql.createConnection({
@@ -25,6 +17,11 @@ if (typeof connectDB === 'undefined') { //make sure the db connection is made
 }
 return {
     insert: function(question) {
+        if (typeof question.question === 'undefined' && typeof question.answer === 'undefined') {
+            return "GFY"; //TODO: Change to throw
+        }
+        let questionOnly = question.question;
+        let answer = request.question;
         const sqlQuestions = "INSERT INTO questions (Name, Description) VALUES ('test', 'test')";
         const sqlAnswers = "INSERT INTO Answers (Name, Description) VALUES ('test', 'test')";
         connectDB.query(sql, function(err, result) {
