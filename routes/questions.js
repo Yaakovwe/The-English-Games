@@ -6,7 +6,7 @@ router.post('/add', function(req, res, next) {
     const query = req.query;
     let question = { question: query.question, answers: query.answers };
     const connect = database.connect();
-    const result = database.insert(connect, question);
+    const result = database.insert(connect, question); //test
     res.send({ Message: result });
 });
 
