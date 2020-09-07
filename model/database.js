@@ -21,11 +21,33 @@ const database = {
 
     insert: function(connection, question) {
         if (typeof question.question === 'undefined' || typeof question.answers === 'undefined') {
-            return "GFY"; //TODO: Change to throw
+            res.send('Missing question or answer');
+        }
+        let questionOnly = question.question;
+        let questionName = question.questionName;
+        let answer = question.answers;
+        const sqlQuestion = "INSERT INTO questions (Name, Description) VALUES ('" + questionName + "','" + questionOnly + "')";
+        const sqlAnswer = "INSERT INTO answers (Name, Description) VALUES ('test', 'test')";
+        connection.query(sqlQuestion, function(err, result) {
+            err ? console.log(err) : console.log('1 question inserted');
+        });
+
+        connection.query(sqlAnswer, function(err, result) { //TODO: Add support for multiple answers
+            err ? console.log(err) : console.log('1 answer inserted');
+
+        });
+        connection.end();
+    },
+
+
+    update: function(connection, question) {
+        if (typeof question.question === 'undefined' || typeof question.answers === 'undefined') {
+            res.send('Missing question or answer');
+
         }
         let questionOnly = question.question;
         let answer = question.answers;
-        const sqlQuestion = "INSERT INTO questions (Name, Description) VALUES ('test', 'test')";
+        const sqlQuestion = "Update questions SET (Name, Description) VALUES ('test', 'test')";
         const sqlAnswer = "INSERT INTO answers (Name, Description) VALUES ('test', 'test')";
 
         connection.query(sqlQuestion, function(err, result) {
@@ -37,7 +59,7 @@ const database = {
 
         });
         connection.end();
-    }
+    },
 
 };
 
