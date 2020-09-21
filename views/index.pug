@@ -2,4 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to the #{title}
+  //- <popup-info img="img/alt.png" data-text="Your card validation code (CVC)
+  //- is an extra security feature — it is the last 3 or 4 numbers on the
+  //-     back of your card."></popup-info>
+  //- script(src='/components/PopUpInfo.js')
+  <question-answer q="Translate the word Schedule  " answers="1;2;3;4"> </question-answer>  
+  script(src='/components/question.js')
